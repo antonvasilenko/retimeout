@@ -1,0 +1,25 @@
+{
+  "name": "retimeout",
+  "version": "1.0.0",
+  "description": "Higher-order component with setTimeout for React",
+  "main": "src/",
+  "scripts": {
+    "test": "echo 'no tests so far'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antonvasilenko/retimeout.git"
+  },
+  "keywords": [
+    "setTimeout",
+    "react",
+    "retimeout",
+    "timeout"
+  ],
+  "author": "antonv",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/antonvasilenko/retimeout/issues"
+  },
+  "homepage": "https://github.com/antonvasilenko/retimeout#readme"
+}
