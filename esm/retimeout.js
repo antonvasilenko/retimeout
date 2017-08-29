@@ -1,14 +1,14 @@
 import React from 'react';
 
-const getDisplayName = (WrappedComponent) =>
+const getDisplayName = WrappedComponent =>
   WrappedComponent.displayName || WrappedComponent.name || 'Component';
 
 // with this one it is possible to wrap several times with different period and action
-const withTimer = (refreshInSeconds, tickAction, resultMapper) => (DecoratedComponent) => {
-  class WithTimer extends React.Component {
+const retimeout = (refreshInSeconds, tickAction, resultMapper) => (DecoratedComponent) => {
+  class Retimeout extends React.Component {
     state = {
       propsToAdd: {},
-    }
+    };
 
     componentDidMount() {
       const interval = refreshInSeconds * 1000;
@@ -41,7 +41,7 @@ const withTimer = (refreshInSeconds, tickAction, resultMapper) => (DecoratedComp
       } else {
         throw new Error('tickAction should be a function');
       }
-    }
+    };
 
     mapTickResult = (res) => {
       if (!this.timer) {
@@ -63,12 +63,12 @@ const withTimer = (refreshInSeconds, tickAction, resultMapper) => (DecoratedComp
     };
 
     render() {
-      return (<DecoratedComponent {...this.childProps} />);
+      return React.createElement(DecoratedComponent, this.childProps);
     }
   }
 
-  WithTimer.displayName = `WithTimer(${getDisplayName(DecoratedComponent)})`;
-  return WithTimer;
+  Retimeout.displayName = `retimeout(${getDisplayName(DecoratedComponent)})`;
+  return Retimeout;
 };
 
-export default withTimer;
+export default retimeout;
